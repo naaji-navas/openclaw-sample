@@ -1,0 +1,24 @@
+# PROJECT_REGISTRY.yaml — Single source of truth for active projects and PMs
+# The coordinator reads this before spawning any new PM to avoid duplicates.
+#
+# Lifecycle: active → completed | archived | cancelled
+#
+# Usage:
+#   - Coordinator checks this file on every new task
+#   - If a PM already exists for the scope, route to it
+#   - If not, spawn a new PM and register it here
+
+registry_version: 1
+updated: 2026-03-09T00:00:00Z
+
+projects: []
+  # Example entry:
+  # - name: auth-refactor
+  #   pm_label: pm-auth-refactor
+  #   status: active
+  #   created: 2026-03-09T10:00:00Z
+  #   scope: "Refactor authentication module, update related docs"
+  #   state_file: projects/auth-refactor/STATE.yaml
+  #   tags:
+  #     - backend
+  #     - security

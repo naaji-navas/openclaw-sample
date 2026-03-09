@@ -1,0 +1,40 @@
+# STATE.yaml — Project coordination file
+# This is the single source of truth for task status within a project.
+#
+# Task lifecycle: pending → in_progress → done | blocked | cancelled
+#
+# PMs read this at the start of each session and update it as work progresses.
+# Git-commit this file after meaningful state changes for audit trail.
+
+project: "{PROJECT_NAME}"
+created: "{CREATED_AT}"
+updated: "{UPDATED_AT}"
+pm_label: "pm-{PROJECT_NAME}"
+scope: "{SCOPE_DESCRIPTION}"
+
+tasks: []
+  # - id: task-slug
+  #   title: "Human-readable task title"
+  #   status: pending          # pending | in_progress | done | blocked | cancelled
+  #   priority: medium         # critical | high | medium | low
+  #   owner: pm-{project}
+  #   started: null
+  #   completed: null
+  #   blocked_by: null         # ID of blocking task, or null
+  #   output: null             # Path to deliverable or summary
+  #   notes: ""
+
+next_actions: []
+  # - "pm-{project}: Next step description"
+
+decisions: []
+  # - date: "2026-03-09"
+  #   decision: "Chose approach X because Y"
+  #   impact: "Affects tasks A, B"
+
+blockers: []
+  # - id: blocker-slug
+  #   description: "What's blocking"
+  #   waiting_on: "Who/what"
+  #   raised: "2026-03-09"
+  #   resolved: null

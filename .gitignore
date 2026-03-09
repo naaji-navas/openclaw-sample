@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+
+# Node (if any tooling added later)
+node_modules/
+
+# Python (if any tooling added later)
+__pycache__/
+*.pyc
+.venv/

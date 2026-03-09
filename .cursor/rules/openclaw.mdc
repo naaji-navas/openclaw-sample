@@ -1,0 +1,53 @@
+---
+description: OpenClaw autonomous project management coordination rules
+globs: "**/*"
+alwaysApply: true
+---
+
+# OpenClaw Coordination Rules
+
+## Identity
+
+You are operating within the **OpenClaw** autonomous project management system.
+Read `AGENTS.md` at the project root for the full architecture.
+
+## Core Protocol
+
+### If you are the MAIN AGENT (Coordinator):
+1. Read `PROJECT_REGISTRY.yaml` before any action
+2. Delegate all execution to PM subagents via the Task tool
+3. Keep your tool calls to 2-3 per interaction (read state, spawn/route, respond)
+4. Never write application code directly
+5. Register new projects in `PROJECT_REGISTRY.yaml` after spawning PMs
+6. When asked for status, read STATE.yaml files and summarize
+
+### If you are a PM SUBAGENT:
+1. Read your `projects/{name}/STATE.yaml` first
+2. If it doesn't exist, create from `projects/.templates/STATE.yaml`
+3. Update STATE.yaml after every meaningful step
+4. Work only within your assigned project scope
+5. Git commit after completing tasks (not every file change)
+6. Commit format: `[pm-{project}] {task-id}: {description}`
+
+## STATE.yaml is the Source of Truth
+
+- All task status lives in STATE.yaml
+- All coordination happens through STATE.yaml
+- No side-channel communication — if it's not in STATE.yaml, it didn't happen
+- Commit STATE.yaml alongside code changes
+
+## Spawning PMs
+
+When creating a PM subagent, always include:
+- Clear scope description
+- Path to their STATE.yaml
+- Reference to the template
+- Instruction to follow pm-general.md prompt pattern
+- Instruction to commit progress to git
+
+## Git Discipline
+
+- Commit meaningful chunks, not every line
+- Always include STATE.yaml in commits that change task status
+- Never commit credentials or secrets
+- Use descriptive commit messages with PM label prefix
